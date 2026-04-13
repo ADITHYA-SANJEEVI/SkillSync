@@ -247,12 +247,8 @@ http://127.0.0.1:8000/api/v1/docs
 - `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` enable live job discovery.
 - Jobfeed enrichment can be paired with local geocoding and location-enrichment toggles during development.
 
-## Public Repository Curation
+## Closing Note
 
-This repository is intentionally cleaned for public presentation.
+SkillSync is designed as a technical bridge between candidate evidence and career action. Its value is not only in extracting signals from resumes or generating polished recommendations, but in making the reasoning process visible: what the system detected, how fit was estimated, where gaps remain, and which next steps are likely to produce the highest return.
 
-- No secret-bearing `.env` files
-- No uploaded resumes or local personal documents
-- No repair scripts, backup trees, dumps, or throwaway workspace tooling
-- No machine-specific caches, `node_modules`, or runtime debris
-- Clear separation between product code, backend services, data seeds, and public assets
+As a repository, it represents a practical synthesis of frontend product design, applied machine learning, semantic retrieval, and LLM-assisted guidance. As a platform concept, it is an attempt to make career development less opaque and more computationally interpretable.
