@@ -1,81 +1,171 @@
 # SkillSync
 
-SkillSync is a full-stack career intelligence system that helps candidates move from raw profile data to concrete decisions. Instead of treating a resume as a static document, the platform models it as a technical signal: extract the skills, score the profile, infer role fit, quantify the gaps, recommend learning paths, and connect the candidate to relevant opportunities.
+SkillSync is a full-stack career intelligence platform that treats resumes, job descriptions, and skill signals as computable inputs rather than static documents. The system is designed to help a candidate understand three things with precision: where they currently stand, what roles they are plausibly aligned to, and what concrete capabilities they need to build next.
 
-The system combines a motion-rich Next.js frontend with a FastAPI backend, resume parsing pipelines, semantic matching, lightweight machine learning, and LLM-assisted guidance. The result is a product that is analytical in structure, practical in output, and designed to make career progression legible.
+At the product level, SkillSync unifies resume scoring, skill extraction, role-fit analysis, gap computation, learning-path generation, live job discovery, and assistant-guided planning. At the systems level, it combines deterministic text processing, semantic retrieval, classic machine learning, and LLM-backed reasoning into a single decision-support workflow.
 
-## What the Platform Does
+## Platform Scope
 
-- Scores resumes with structured, section-aware feedback
-- Extracts normalized skill signals from uploaded documents
-- Ranks best-fit roles and explains the match rationale
-- Computes candidate-vs-job gaps with actionable next steps
-- Recommends learning paths across foundations, projects, and stretch areas
-- Surfaces live job opportunities with location-aware exploration
-- Supports AI chat workflows for planning, coaching, and follow-up guidance
+- Resume upload and structured profile extraction
+- Skill extraction with normalized technical vocabulary
+- Resume scoring with interpretable feedback
+- Ranked role-fit analysis and overlap reasoning
+- Candidate-versus-job gap computation
+- Guided learning recommendations and course planning
+- Location-aware job discovery and map-based exploration
+- Assistant workflows for coaching, planning, and follow-up actions
 
-## Interface Tour
+## Product Views
 
-The product is organized as a connected workflow rather than a disconnected set of tools. The gallery below reflects the actual experience exposed by the public repository.
+The interface is organized as a connected workflow rather than a collection of isolated tools. The screenshots below reflect that progression from orientation, to analysis, to decision support.
+
+### Landing and Positioning
 
 <p align="center">
-  <img src="screenshots/04-landing.jpeg" alt="SkillSync landing page" width="48%" />
-  <img src="screenshots/05-value-grid.jpeg" alt="SkillSync product principles and technical value grid" width="48%" />
+  <img src="screenshots/04-landing.jpeg" alt="SkillSync landing page" width="88%" />
 </p>
 
 <p align="center">
-  <img src="screenshots/03-dashboard.jpeg" alt="SkillSync dashboard with momentum and skill pulse panels" width="48%" />
+  <img src="screenshots/05-value-grid.jpeg" alt="SkillSync product principles and technical value grid" width="88%" />
+</p>
+
+### Dashboard and Candidate State
+
+<p align="center">
+  <img src="screenshots/03-dashboard.jpeg" alt="SkillSync dashboard showing candidate momentum and skill pulse analytics" width="88%" />
+</p>
+
+The dashboard acts as an operational view of candidate progress: resume state, workflow momentum, skill pulse, and the next highest-leverage action.
+
+### Skill Analysis Workflow
+
+<p align="center">
   <img src="screenshots/02-skill-analysis-upload.jpeg" alt="SkillSync skill analysis upload flow" width="48%" />
+  <img src="screenshots/06-skill-analysis-results.jpeg" alt="SkillSync ranked skill-analysis results" width="48%" />
 </p>
+
+This flow moves from ingestion to ranked role-fit analysis. The system extracts skill signals, estimates role alignment, and surfaces a more interpretable best-fit view than a generic resume score alone.
+
+### Gap and Metrics Layer
 
 <p align="center">
-  <img src="screenshots/06-skill-analysis-results.jpeg" alt="SkillSync ranked role-fit analysis results" width="48%" />
-  <img src="screenshots/01-professional-metrics.jpeg" alt="SkillSync professional metrics and gap indicators" width="48%" />
+  <img src="screenshots/01-professional-metrics.jpeg" alt="SkillSync professional metrics and gap indicators" width="42%" />
 </p>
+
+The metrics layer focuses on what is absent, weakly evidenced, or only partially represented. It is intended to make the next improvement step explicit rather than implied.
+
+### Job Discovery
 
 <p align="center">
-  <img src="screenshots/07-live-jobs.jpeg" alt="SkillSync live jobs discovery interface" width="48%" />
-  <img src="screenshots/08-chat-assistant.jpeg" alt="SkillSync assistant-driven learning plan workflow" width="30%" />
+  <img src="screenshots/07-live-jobs.jpeg" alt="SkillSync live jobs discovery experience" width="88%" />
 </p>
 
-## AI + ML Design
+Job exploration is tied back to the candidate profile, allowing the platform to connect role intent, location, and fit-oriented reasoning in a single interface.
 
-SkillSync is not framed as an "AI wrapper." The backend uses a hybrid intelligence architecture in which deterministic systems, classical ML, semantic retrieval, and LLM reasoning each handle the part of the problem they are best suited for.
+### Assistant-Guided Planning
 
-- Deterministic parsing and normalization create a stable base layer for resume and JD ingestion.
-- Taxonomy-aware skill extraction reduces noisy keyword behavior and preserves role relevance.
-- TF-IDF-style ranking and heuristic extraction provide robust fallback behavior for structured term discovery.
-- Sentence-transformer embeddings support semantic comparisons across skills, roles, and learning catalogs.
-- Fuzzy matching recovers aliases, near-matches, and imperfectly expressed skills.
-- scikit-learn and XGBoost support model-assisted ranking and scoring paths where predictive structure matters.
-- LLM-backed routes are reserved for higher-order reasoning tasks: coaching packs, role narratives, guided plans, recommendation enrichment, and conversational assistance.
+<p align="center">
+  <img src="screenshots/08-chat-assistant.jpeg" alt="SkillSync assistant-guided learning plan and support workflow" width="52%" />
+</p>
 
-The operating principle is straightforward: use deterministic logic for correctness, ML for ranking and retrieval, and LLMs for explanation, synthesis, and decision support.
+The assistant layer is designed to convert analysis into action: planning a learning path, clarifying missing skills, and generating targeted next steps.
 
-## System Architecture
+## AI and ML Architecture
 
-- `frontend/` contains the product UI: dashboard, resume workflows, skill analysis, gap analysis, recommendations, job exploration, and chat.
-- `backend/app/api/` exposes the REST surface for scoring, upload, matching, recommendation, and retrieval flows.
-- `backend/app/ml/` contains semantic matching, embeddings, gap computation, and learning-oriented ML helpers.
-- `backend/app/llm_api/` contains the LLM-facing routes used for explanation and guided output generation.
-- `backend/app/models/` packages fitted model artifacts used by the ML-assisted path.
-- `db/seeds/` provides lightweight local seed data for reproducible setup.
-- `screenshots/` contains the public product imagery used in this README.
+SkillSync is built on a hybrid intelligence model. It does not rely on a single scoring heuristic or a single LLM prompt. Instead, different computational layers are responsible for different forms of reasoning.
+
+### 1. Deterministic Processing
+
+The first stage is intentionally non-generative.
+
+- Resume and JD content are parsed and normalized into stable textual inputs.
+- Skill strings are cleaned, canonicalized, and aligned to curated taxonomies.
+- Exact overlaps, section signals, and structural indicators are extracted before any generative reasoning is introduced.
+
+This layer makes the system auditable. It ensures that downstream scoring and guidance are anchored to explicit evidence rather than prompt-only interpretation.
+
+### 2. Feature Engineering and Classical ML
+
+The backend contains explicit ranking and scoring infrastructure built on standard ML tooling.
+
+- TF-IDF vectorization is used for text similarity and signal weighting.
+- Cosine similarity and overlap statistics are used to compare resumes and role descriptions.
+- Hand-engineered features such as skill overlap, jaccard-style coverage, title cues, and profile density are assembled into ranking features.
+- `scikit-learn` supports vectorization, similarity, and feature-oriented modeling utilities.
+- `XGBoost` is included for model-assisted fit scoring and structured predictive ranking.
+
+This matters because the platform is not merely describing a resume. It is constructing a measurable compatibility surface between candidate evidence and role requirements.
+
+### 3. Semantic Retrieval
+
+Keyword overlap is not enough for career matching, especially when candidates describe the same capability in inconsistent ways. To reduce that brittleness, SkillSync includes semantic retrieval components.
+
+- Sentence-transformer embeddings are used to represent skills, roles, and catalog items in vector space.
+- Role and skill catalogs can be embedded and queried semantically instead of only by raw string match.
+- This allows the system to recover meaning when terminology is approximate, implicit, or phrased differently across resumes and job descriptions.
+
+In practice, that means the system can reason about conceptual relatedness, not just literal token overlap.
+
+### 4. Fuzzy Matching and Skill Recovery
+
+A large part of candidate data quality is imperfect expression: abbreviations, variants, aliases, and near-matches. The backend addresses that directly.
+
+- Fuzzy matching is used to recover near-equivalent skills and normalize noisy terms.
+- Alias handling improves recall for technologies that are commonly misspelled or referred to inconsistently.
+- Partial-similarity matching supports more useful gap analysis than a binary have-versus-don't-have model.
+
+This is especially important in the compute-gaps pipeline, where partial evidence and adjacent capability matter more than literal equality.
+
+### 5. LLM-Backed Reasoning
+
+LLMs are used where synthesis and explanation are genuinely valuable.
+
+- Generating role-fit narratives
+- Producing coaching packs and improvement summaries
+- Inferring likely roles from a resume profile
+- Generating guided learning plans from computed gaps
+- Powering conversational assistant flows
+- Enriching recommendations with concise reasoning
+
+The LLM layer is therefore interpretive and assistive, not foundational. Core matching and evidence extraction happen before the system asks a model to explain what the evidence implies.
+
+### 6. Design Principle
+
+The governing principle is simple:
+
+- deterministic logic for correctness
+- classical ML for ranking and scoring
+- semantic retrieval for robustness
+- LLMs for explanation, synthesis, and user-facing guidance
+
+That hybrid structure is what gives SkillSync both technical rigor and product fluency.
+
+## System Design
+
+- `frontend/` contains the user-facing application: dashboard, analysis flows, recommendation pages, job exploration, and assistant interfaces.
+- `backend/app/api/` exposes the operational API surface for upload, scoring, matching, and retrieval workflows.
+- `backend/app/ml/` contains embeddings, catalog search, gap computation, recommendation logic, and semantic matching helpers.
+- `backend/app/services/` contains feature engineering, model-serving utilities, resume feedback logic, job retrieval helpers, and LLM clients.
+- `backend/app/llm_api/` contains LLM-oriented routes for reasoning-heavy tasks such as role inference, coaching, and plan generation.
+- `backend/app/models/` packages the fitted artifacts used by the ML-assisted path.
+- `db/seeds/` contains lightweight seed data for repeatable local setup.
+- `screenshots/` contains the public product images used in this README.
 
 ```text
 Resume / JD input
-  -> extraction + normalization
-  -> skill ranking + semantic matching
-  -> scoring + gap computation
-  -> recommendation + narrative enrichment
-  -> visual analytics + guided action
+  -> parsing + normalization
+  -> taxonomy-aware skill extraction
+  -> feature engineering + semantic retrieval
+  -> scoring / ranking / gap computation
+  -> LLM explanation and guided planning
+  -> visual analytics and action surfaces
 ```
 
 ## Technology Stack
 
 - Frontend: Next.js, React, TypeScript, Tailwind CSS, Framer Motion
 - Backend: FastAPI, Pydantic, NumPy, Pandas, scikit-learn, XGBoost
-- Matching and retrieval: sentence-transformers, fuzzy matching, taxonomy-guided normalization
+- Matching and retrieval: sentence-transformers, TF-IDF, fuzzy matching, taxonomy-guided normalization
 - Integrations: Supabase, Chutes-compatible LLM endpoints, Adzuna job feed
 - Data assets: packaged model artifacts, role catalogs, skill taxonomies, and seed datasets
 
@@ -114,7 +204,7 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload --port 8000
 ```
 
-Local API documentation:
+Local API docs:
 
 ```text
 http://127.0.0.1:8000/api/v1/docs
@@ -125,7 +215,7 @@ http://127.0.0.1:8000/api/v1/docs
 - `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` support auth-facing flows.
 - `CHUTES_*` variables enable LLM-backed guidance, recommendation, and assistant routes.
 - `ADZUNA_APP_ID` and `ADZUNA_APP_KEY` enable live job discovery.
-- Jobfeed enrichment can optionally be paired with local geocoding and location enrichment toggles during development.
+- Jobfeed enrichment can be paired with local geocoding and location-enrichment toggles during development.
 
 ## Public Repository Curation
 
@@ -139,4 +229,4 @@ This repository is intentionally cleaned for public presentation.
 
 ## Positioning
 
-SkillSync is designed as an engineering-first career platform: part resume intelligence engine, part skill graph explorer, part recommendation system, and part applied AI assistant. Its purpose is not merely to analyze a profile, but to make the candidate's current position, missing capabilities, and next highest-leverage moves technically understandable.
+SkillSync is designed as an engineering-first career platform: part resume intelligence engine, part skill graph explorer, part recommendation system, and part applied AI assistant. Its purpose is not merely to inspect a profile, but to make the candidate's current state, missing capabilities, and next highest-leverage moves computationally understandable.
