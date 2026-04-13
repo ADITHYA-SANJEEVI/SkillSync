@@ -22,17 +22,17 @@ The interface is organized as a connected workflow rather than a collection of i
 ### Landing and Positioning
 
 <p align="center">
-  <img src="screenshots/04-landing.jpeg" alt="SkillSync landing page" width="88%" />
+  <img src="screenshots/gallery/04-landing.jpeg" alt="SkillSync landing page" width="88%" />
 </p>
 
 <p align="center">
-  <img src="screenshots/05-value-grid.jpeg" alt="SkillSync product principles and technical value grid" width="88%" />
+  <img src="screenshots/gallery/05-value-grid.jpeg" alt="SkillSync product principles and technical value grid" width="88%" />
 </p>
 
 ### Dashboard and Candidate State
 
 <p align="center">
-  <img src="screenshots/03-dashboard.jpeg" alt="SkillSync dashboard showing candidate momentum and skill pulse analytics" width="88%" />
+  <img src="screenshots/gallery/03-dashboard.jpeg" alt="SkillSync dashboard showing candidate momentum and skill pulse analytics" width="88%" />
 </p>
 
 The dashboard acts as an operational view of candidate progress: resume state, workflow momentum, skill pulse, and the next highest-leverage action.
@@ -40,16 +40,15 @@ The dashboard acts as an operational view of candidate progress: resume state, w
 ### Skill Analysis Workflow
 
 <p align="center">
-  <img src="screenshots/02-skill-analysis-upload.jpeg" alt="SkillSync skill analysis upload flow" width="48%" />
-  <img src="screenshots/06-skill-analysis-results.jpeg" alt="SkillSync ranked skill-analysis results" width="48%" />
+  <img src="screenshots/gallery/06-skill-analysis-results.jpeg" alt="SkillSync ranked skill-analysis results" width="88%" />
 </p>
 
-This flow moves from ingestion to ranked role-fit analysis. The system extracts skill signals, estimates role alignment, and surfaces a more interpretable best-fit view than a generic resume score alone.
+This flow moves from document evidence to ranked role-fit analysis. The system extracts skill signals, estimates role alignment, and surfaces a more interpretable best-fit view than a generic resume score alone.
 
 ### Gap and Metrics Layer
 
 <p align="center">
-  <img src="screenshots/01-professional-metrics.jpeg" alt="SkillSync professional metrics and gap indicators" width="42%" />
+  <img src="screenshots/gallery/01-professional-metrics.jpeg" alt="SkillSync professional metrics and gap indicators" width="62%" />
 </p>
 
 The metrics layer focuses on what is absent, weakly evidenced, or only partially represented. It is intended to make the next improvement step explicit rather than implied.
@@ -57,7 +56,7 @@ The metrics layer focuses on what is absent, weakly evidenced, or only partially
 ### Job Discovery
 
 <p align="center">
-  <img src="screenshots/07-live-jobs.jpeg" alt="SkillSync live jobs discovery experience" width="88%" />
+  <img src="screenshots/gallery/07-live-jobs.jpeg" alt="SkillSync live jobs discovery experience" width="88%" />
 </p>
 
 Job exploration is tied back to the candidate profile, allowing the platform to connect role intent, location, and fit-oriented reasoning in a single interface.
@@ -65,7 +64,7 @@ Job exploration is tied back to the candidate profile, allowing the platform to 
 ### Assistant-Guided Planning
 
 <p align="center">
-  <img src="screenshots/08-chat-assistant.jpeg" alt="SkillSync assistant-guided learning plan and support workflow" width="52%" />
+  <img src="screenshots/gallery/08-chat-assistant.jpeg" alt="SkillSync assistant-guided learning plan and support workflow" width="72%" />
 </p>
 
 The assistant layer is designed to convert analysis into action: planning a learning path, clarifying missing skills, and generating targeted next steps.
@@ -95,6 +94,8 @@ The backend contains explicit ranking and scoring infrastructure built on standa
 - `XGBoost` is included for model-assisted fit scoring and structured predictive ranking.
 
 This matters because the platform is not merely describing a resume. It is constructing a measurable compatibility surface between candidate evidence and role requirements.
+
+In the current backend, model-oriented scoring is not abstract prose. The feature path explicitly includes signals such as cosine similarity, skill overlap, skill union, skill-jaccard behavior, resume skill count, job skill count, and title-level priors for role families such as SWE and ML. That gives the ranking layer a concrete numerical basis before any narrative explanation is generated.
 
 ### 3. Semantic Retrieval
 
@@ -129,7 +130,19 @@ LLMs are used where synthesis and explanation are genuinely valuable.
 
 The LLM layer is therefore interpretive and assistive, not foundational. Core matching and evidence extraction happen before the system asks a model to explain what the evidence implies.
 
-### 6. Design Principle
+That separation is visible in the route design. The backend maintains direct scoring, extraction, and gap-computation paths, while the LLM routes primarily handle structured JSON role inference, coaching-pack generation, plan synthesis, and recommendation enrichment.
+
+### 6. Recommendation Logic
+
+The recommendation system is also hybrid rather than purely generative.
+
+- Courses are retrieved against target skills and normalized coverage signals.
+- Deterministic ranking considers factors such as skill coverage, level and time-fit, trust, freshness, and access constraints.
+- LLM notes can then be added as a final explanatory layer rather than replacing the retrieval logic itself.
+
+This is important because recommendation quality in this domain depends on grounded retrieval first and narrative framing second.
+
+### 7. Design Principle
 
 The governing principle is simple:
 
