@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Complete SQL Basics",
+    "provider": "Khan Academy",
+    "url": "https://www.khanacademy.org/",
+    "tags": ["sql"]
+  },
+  {
+    "title": "Data Analysis with Pandas",
+    "provider": "Kaggle",
+    "url": "https://www.kaggle.com/learn/pandas",
+    "tags": ["pandas", "python"]
+  },
+  {
+    "title": "AWS Cloud Practitioner Essentials",
+    "provider": "AWS",
+    "url": "https://www.aws.training/",
+    "tags": ["aws", "cloud"]
+  },
+  {
+    "title": "Intro to Docker",
+    "provider": "Docker",
+    "url": "https://docs.docker.com/get-started/",
+    "tags": ["docker"]
+  }
+]

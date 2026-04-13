@@ -1,0 +1,5 @@
+﻿[
+  "python","pandas","numpy","sql","scikit-learn","xgboost","tensorflow","pytorch","docker","kubernetes",
+  "aws","gcp","azure","mlops","airflow","mlflow","spark","hadoop","linux","git","nlp","computer vision",
+  "feature engineering","hyperparameter tuning","model deployment","monitoring","graphql","rest api"
+]

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "c1",
+    "title": "Docker for Developers",
+    "provider": "Coursera",
+    "url": "https://example.com/course/docker",
+    "desc": "Intro to Docker",
+    "skills": ["docker"]
+  },
+  {
+    "id": "c2",
+    "title": "Kubernetes Basics",
+    "provider": "Udemy",
+    "url": "https://example.com/course/k8s",
+    "desc": "K8s fundamentals",
+    "skills": ["kubernetes"]
+  }
+]

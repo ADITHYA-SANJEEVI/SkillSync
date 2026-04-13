@@ -1,0 +1,6 @@
+﻿id,title,provider,url,skills
+c1,End-to-End XGBoost,Udemy,https://example.com/xgb,"xgboost|scikit-learn|feature engineering"
+c2,TensorFlow in Practice,Coursera,https://example.com/tf,"tensorflow|deep learning"
+c3,PyTorch Bootcamp,Udacity,https://example.com/pt,"pytorch|deep learning"
+c4,Practical MLOps,Datacamp,https://example.com/mlops,"mlops|mlflow|airflow|docker|kubernetes"
+c5,SQL for Analysts,Dataquest,https://example.com/sql,"sql|postgres"

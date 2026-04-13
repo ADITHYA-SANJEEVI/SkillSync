@@ -1,0 +1,14 @@
+﻿fastapi
+uvicorn[standard]
+pydantic
+python-multipart
+numpy
+pandas
+scikit-learn
+xgboost
+rapidfuzz
+pdfminer.six
+PyPDF2
+python-docx
+requests
+beautifulsoup4

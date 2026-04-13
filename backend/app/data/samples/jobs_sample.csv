@@ -1,0 +1,5 @@
+﻿id,title,company,location,description
+1,Machine Learning Engineer,Acme,Remote,"Looking for Python, scikit-learn, XGBoost, Docker, AWS. Build ML pipelines and deploy."
+2,Data Scientist,Globex,Bangalore,"Python, Pandas, Numpy, SQL, statistics. Experience with MLflow and Airflow preferred."
+3,ML Ops Engineer,Initrode,Hyderabad,"MLOps, Kubernetes, Docker, AWS/GCP, monitoring, CI/CD."
+4,NLP Engineer,Fabrikam,Remote,"NLP, Transformers, PyTorch, TensorFlow, Python. Deploy to cloud."
